@@ -283,7 +283,6 @@ export default class Slider extends PureComponent {
           {...this._panResponder.panHandlers}>
           {debugTouchArea === true && this._renderDebugThumbTouchRect(thumbLeft)}
         </View>
-        <Text style={{letterSpacing: thumbLeft || 0}} >0 1 2 3 4 5 6 7 8 9 10</Text>
       </View>
     );
   };
