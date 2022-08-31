@@ -178,7 +178,8 @@ export default class Slider extends PureComponent {
     thumbTintColor: '#343434',
     thumbTouchSize: {width: 40, height: 40},
     debugTouchArea: false,
-    animationType: 'timing'
+    animationType: 'timing',
+    vertical: false,
   };
 
   state = {
@@ -282,6 +283,7 @@ export default class Slider extends PureComponent {
           {...this._panResponder.panHandlers}>
           {debugTouchArea === true && this._renderDebugThumbTouchRect(thumbLeft)}
         </View>
+        <Text style={{letterSpacing: thumbLeft || 0}} >0 1 2 3 4 5 6 7 8 9 10</Text>
       </View>
     );
   };
@@ -383,7 +385,8 @@ export default class Slider extends PureComponent {
 
   _getValue = (gestureState: Object) => {
     var length = this.state.containerSize.width - this.state.thumbSize.width;
-    var thumbLeft = this._previousLeft + gestureState.dx;
+    var distance = this.props.vertical ? gestureState.dy : gestureState.dx;
+    var thumbLeft = this._previousLeft + distance;
 
     var ratio = thumbLeft / length;
 
